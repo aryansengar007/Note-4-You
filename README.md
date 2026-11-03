@@ -18,7 +18,7 @@
 <!--                      CTA BUTTONS                               -->
 <!-- ╚══════════════════════════════════════════════════════════════╝ -->
 
-[![Live Demo](https://img.shields.io/badge/🌐%20Live%20Demo-YOUR--SITE.netlify.app-11264b?style=for-the-badge&logoColor=white)](https://YOUR-SITE.netlify.app/)
+[![Live Demo](https://img.shields.io/badge/🌐%20Live%20Demo-note--4--you.netlify.app-11264b?style=for-the-badge&logoColor=white)](https://note-4-you.netlify.app/)
 [![Portfolio](https://img.shields.io/badge/🧑‍💻%20Portfolio-aryan--sengar-2a5db0?style=for-the-badge)](https://aryan-sengar-portfolio-v2.netlify.app/)
 
 <br/>
@@ -54,7 +54,7 @@
 
 <div align="center">
 
-[![Site Preview](assets_readme/hero.png)](https://YOUR-SITE.netlify.app/)
+[![Site Preview](assets_readme/hero.png)](https://note-4-you.netlify.app/)
 
 *Left to right: the sealed envelope, the message, the photo question, and the reply options ↑*
 
@@ -184,7 +184,7 @@ Sealed envelope  ("Is it alright if I tell you here?")
 ## 📁 Project Structure
 
 ```
-Note-For-You-v1/
+Note-4-You/
 │
 ├── 📄 index.html                    ← The note: envelope, message, photo question, contact
 ├── 🎨 style.css                     ← All styles, envelope animation, responsive rules
@@ -229,13 +229,13 @@ Note-For-You-v1/
 **1. Clone the repository**
 
 ```bash
-git clone https://github.com/aryansengar007/Note-For-You-v1.git
+git clone https://github.com/aryansengar007/Note-4-You.git
 ```
 
 **2. Navigate into the project folder**
 
 ```bash
-cd Note-For-You-v1
+cd Note-4-You
 ```
 
 **3. Start a local server**
