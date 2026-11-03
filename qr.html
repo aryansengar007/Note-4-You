@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>QR code maker</title>
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="referrer" content="no-referrer">
+  <meta name="theme-color" content="#11264b">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="preload" href="fonts/young-serif-latin-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/figtree-latin-wght.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="qr.css">
+</head>
+<body>
+  <div class="stage stage--doc">
+    <main>
+      <div class="note">
+        <article class="step doc">
+          <a class="back" href="index.html">Back to the note</a>
+          <h1>QR code maker</h1>
+          <p>Paste the final link to your note. The code is made on this device and is never uploaded.</p>
+
+          <div class="controls">
+            <div class="field">
+              <label for="url">Link to your note</label>
+              <input id="url" type="url" inputmode="url" autocomplete="off" autocapitalize="none" spellcheck="false" placeholder="https://your-site.netlify.app">
+            </div>
+            <div class="field">
+              <label for="cap">Words under the code (optional)</label>
+              <input id="cap" type="text" maxlength="40" autocomplete="off" placeholder="Leave empty for no text">
+            </div>
+            <p class="msg" id="msg" role="status" aria-live="polite">Paste the link to see your code.</p>
+          </div>
+
+          <div class="qr-out" id="qr-out" role="img" aria-label="Preview of your QR code" hidden></div>
+
+          <div class="controls btn-row">
+            <button class="btn btn--solid" type="button" id="dl-png" disabled>Download PNG</button>
+            <button class="btn btn--line" type="button" id="dl-svg" disabled>Download SVG</button>
+            <button class="btn btn--line" type="button" id="print" disabled>Print</button>
+          </div>
+
+          <div class="tips">
+            <h2>Before you print</h2>
+            <ul>
+              <li>Scan the preview with your own phone camera first.</li>
+              <li>Use your final link. If the link changes later, a printed code stops working.</li>
+              <li>Print it at least 3 cm wide, dark on a light background, with the white border left in place.</li>
+              <li>This page is not linked from your note. You can delete <code>qr.html</code>, <code>qr.css</code>, <code>qr.js</code> and the <code>vendor</code> folder before launch if you prefer.</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </main>
+
+    <footer class="foot">
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
+    </footer>
+  </div>
+
+  <script src="vendor/qrcode.js"></script>
+  <script src="qr.js"></script>
+</body>
+</html>
