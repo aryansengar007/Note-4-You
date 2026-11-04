@@ -1,0 +1,672 @@
+@font-face {
+  font-family: "Young Serif";
+  src: url("fonts/young-serif-latin-400.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Figtree";
+  src: url("fonts/figtree-latin-wght.woff2") format("woff2");
+  font-weight: 300 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --night: #11264b;
+  --night-soft: #1d3b70;
+  --paper: #fbf8f1;
+  --paper-deep: #f1e9d6;
+  --paper-edge: #cfc4a8;
+  --mail-red: #d63a3a;
+  --mail-blue: #2a5db0;
+  --muted: #475674;
+  --on-night-muted: #c4cde0;
+  --serif: "Young Serif", Georgia, "Times New Roman", serif;
+  --sans: "Figtree", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --edge: 10px;
+  --stripes: repeating-linear-gradient(
+    -45deg,
+    var(--mail-red) 0 16px,
+    var(--paper) 16px 32px,
+    var(--mail-blue) 32px 48px,
+    var(--paper) 48px 64px
+  );
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--night);
+  color: var(--paper);
+  font: 400 1.125rem/1.55 var(--sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Page frame */
+
+.stage {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  padding:
+    max(8px, env(safe-area-inset-top))
+    max(12px, env(safe-area-inset-right))
+    max(8px, env(safe-area-inset-bottom))
+    max(12px, env(safe-area-inset-left));
+}
+
+.top {
+  display: flex;
+  width: 100%;
+  max-width: 30rem;
+  margin: 0 auto;
+}
+
+.exit {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 4px;
+  color: var(--on-night-muted);
+  font-size: 0.9375rem;
+  text-underline-offset: 4px;
+}
+
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 30rem;
+  margin: 0 auto;
+}
+
+/* Type */
+
+h1 {
+  margin: 0 0 20px;
+  font: 400 clamp(2rem, 9vw, 2.75rem) / 1.1 var(--serif);
+  letter-spacing: -0.012em;
+  text-wrap: balance;
+  overflow-wrap: break-word;
+  outline: none;
+}
+
+p {
+  margin: 0 0 16px;
+  max-width: 34ch;
+  text-wrap: pretty;
+}
+
+.fine {
+  margin: 4px 0 0;
+  font-size: 0.9375rem;
+  line-height: 1.45;
+}
+
+/* Letter card: the striped frame is the envelope's airmail border. */
+
+.note {
+  flex: 1;
+  display: flex;
+  margin: 4px 0 0;
+  padding: var(--edge);
+  background: var(--stripes);
+  color: var(--night);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.28);
+}
+
+.step {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: clamp(24px, 7vw, 40px);
+  padding-top: clamp(32px, 8vh, 64px);
+  background: var(--paper);
+}
+
+.step .fine {
+  color: var(--muted);
+}
+
+.step--message h1 {
+  font-size: clamp(2.25rem, 11vw, 3.25rem);
+  line-height: 1.06;
+}
+
+.sig {
+  margin: 8px 0 0;
+  font: 400 1.75rem/1.2 var(--serif);
+}
+
+.actions {
+  margin-top: auto;
+  padding-top: 32px;
+  display: grid;
+  gap: 12px;
+}
+
+/* Buttons: plain rectangles, yes and no are the same size and weight. */
+
+.btn {
+  appearance: none;
+  -webkit-appearance: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 56px;
+  padding: 0 24px;
+  border: 2px solid var(--night);
+  border-radius: 6px;
+  font: 600 1.0625rem/1.2 var(--sans);
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  transition: background-color 0.15s ease, color 0.15s ease, transform 0.1s ease;
+}
+
+.btn--solid {
+  background: var(--night);
+  color: var(--paper);
+}
+
+.btn--line {
+  background: transparent;
+  color: var(--night);
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.text-btn {
+  appearance: none;
+  -webkit-appearance: none;
+  align-self: flex-start;
+  min-height: 48px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--night);
+  font: 600 1rem/1.2 var(--sans);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.btn:focus-visible,
+.text-btn:focus-visible,
+.back:focus-visible,
+.doc a:focus-visible {
+  outline: 3px solid var(--mail-blue);
+  outline-offset: 3px;
+}
+
+@media (hover: hover) {
+  .btn--solid:hover {
+    background: var(--night-soft);
+  }
+
+  .btn--line:hover {
+    background: rgba(17, 38, 75, 0.08);
+  }
+}
+
+/* The same controls on the night background (intro screen). */
+
+.on-night .btn {
+  border-color: var(--paper);
+}
+
+.on-night .btn--solid {
+  background: var(--paper);
+  color: var(--night);
+}
+
+.on-night .btn--line {
+  background: transparent;
+  color: var(--paper);
+}
+
+.on-night .btn:focus-visible,
+.exit:focus-visible,
+.foot a:focus-visible {
+  outline: 3px solid var(--paper);
+  outline-offset: 3px;
+}
+
+.on-night .fine {
+  color: var(--on-night-muted);
+}
+
+@media (hover: hover) {
+  .on-night .btn--solid:hover {
+    background: #ffffff;
+  }
+
+  .on-night .btn--line:hover {
+    background: rgba(251, 248, 241, 0.12);
+  }
+}
+
+/* Footer links */
+
+.foot {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  padding-top: 8px;
+}
+
+.foot a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 12px;
+  color: var(--paper);
+  font-size: 0.9375rem;
+  text-underline-offset: 4px;
+  opacity: 0.88;
+}
+
+/* Intro scene: a sealed envelope on the night background. */
+
+.scene {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 0 6px;
+}
+
+.env-zone {
+  display: flex;
+  justify-content: center;
+  padding: clamp(24px, 6vh, 56px) 0 clamp(20px, 4vh, 36px);
+}
+
+.envelope {
+  position: relative;
+  width: min(100%, 21.5rem, 60vh);
+  aspect-ratio: 3 / 2;
+  perspective: 900px;
+  container-type: inline-size;
+}
+
+.env-letter {
+  position: absolute;
+  z-index: 1;
+  left: 7%;
+  right: 7%;
+  top: 8%;
+  height: 84%;
+  background:
+    repeating-linear-gradient(to bottom, transparent 0 17px, rgba(42, 93, 176, 0.22) 17px 18px),
+    var(--paper);
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.18);
+  transition: transform 0.65s cubic-bezier(0.2, 0.8, 0.2, 1) 0.3s;
+}
+
+.env-front {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  padding: 9px;
+  background: var(--stripes);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.35);
+}
+
+.env-face {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: var(--paper);
+  color: var(--night);
+}
+
+.addr {
+  position: absolute;
+  left: 7%;
+  bottom: 13%;
+}
+
+.addr-to {
+  margin: 0;
+  max-width: none;
+  font: 400 2.1rem/1 var(--serif);
+  font: 400 9.5cqw/1 var(--serif);
+}
+
+.addr-from {
+  margin: 8px 0 0;
+  max-width: none;
+  font: 600 0.8125rem/1.2 var(--sans);
+  font: 600 4.2cqw/1.2 var(--sans);
+  color: var(--muted);
+}
+
+.stamp {
+  position: absolute;
+  right: 6%;
+  bottom: 12%;
+  width: 17%;
+  aspect-ratio: 4 / 5;
+  display: grid;
+  place-items: center;
+  background: var(--mail-red);
+  border: 4px dotted var(--paper);
+  color: var(--paper);
+  font: 400 0.8125rem/1 var(--serif);
+  font: 400 4.6cqw/1 var(--serif);
+  letter-spacing: 0.02em;
+}
+
+.flap {
+  position: absolute;
+  top: 9px;
+  left: 9px;
+  right: 9px;
+  height: 50%;
+  z-index: 3;
+  transform-origin: 50% 0;
+  transform-style: preserve-3d;
+}
+
+.flap-out,
+.flap-in {
+  position: absolute;
+  inset: 0;
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.flap-out {
+  background: var(--paper-edge);
+}
+
+.flap-out::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--paper-deep);
+  clip-path: polygon(1.6% 0, 98.4% 0, 50% 95%);
+}
+
+.flap-in {
+  background: var(--paper-edge);
+  transform: rotateX(180deg);
+}
+
+.flap-in::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #e4d9bf;
+  clip-path: polygon(1.6% 0, 98.4% 0, 50% 95%);
+}
+
+.scene.opening .env-letter {
+  transform: translateY(-72%);
+}
+
+.scene.opening .flap {
+  animation: flap 0.5s cubic-bezier(0.3, 0.7, 0.3, 1) forwards;
+}
+
+@keyframes flap {
+  0% {
+    transform: rotateX(0deg);
+    z-index: 3;
+  }
+
+  49% {
+    z-index: 3;
+  }
+
+  50% {
+    transform: rotateX(-90deg);
+    z-index: 0;
+  }
+
+  100% {
+    transform: rotateX(-180deg);
+    z-index: 0;
+  }
+}
+
+.scene.enter.opening > .copy,
+.scene.enter.opening > .actions {
+  animation: fadeout 0.25s ease forwards;
+  pointer-events: none;
+}
+
+@keyframes fadeout {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+.top {
+  transition: opacity 0.2s ease;
+}
+
+body.is-opening .top {
+  opacity: 0;
+}
+
+/* One entrance per screen, triggered by the person's tap. */
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.scene.enter > *,
+.note.enter .step > * {
+  animation: rise 0.4s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+.scene.enter > :nth-child(2),
+.note.enter .step > :nth-child(2) {
+  animation-delay: 0.06s;
+}
+
+.scene.enter > :nth-child(3),
+.note.enter .step > :nth-child(3) {
+  animation-delay: 0.12s;
+}
+
+.scene.enter > :nth-child(4),
+.note.enter .step > :nth-child(4) {
+  animation-delay: 0.18s;
+}
+
+/* The message arrives in beats so it can be read in order. */
+
+.note.enter .step--message > h1 {
+  animation-delay: 0.1s;
+}
+
+.note.enter .step--message > p {
+  animation-delay: 0.8s;
+}
+
+.note.enter .step--message > .sig {
+  animation-delay: 1.3s;
+}
+
+.note.enter .step--message > .actions {
+  animation-delay: 1.7s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scene.enter > *,
+  .note.enter .step > * {
+    animation: none;
+  }
+
+  .btn {
+    transition: none;
+  }
+
+  .scene.opening .env-letter,
+  .scene.opening .flap,
+  .scene.enter.opening > .copy,
+  .scene.enter.opening > .actions {
+    transition: none;
+    animation: none;
+  }
+
+  .top {
+    transition: none;
+  }
+}
+
+/* Short phones: give the buttons room without scrolling */
+
+@media (max-height: 700px) {
+  .env-zone {
+    padding: 12px 0 16px;
+  }
+
+  .envelope {
+    width: min(100%, 21.5rem, 48vh);
+  }
+
+  h1 {
+    margin-bottom: 12px;
+  }
+
+  .scene p {
+    margin-bottom: 8px;
+  }
+
+  .actions {
+    padding-top: 16px;
+  }
+}
+
+/* Laptop and desktop */
+
+@media (min-width: 600px) {
+  .envelope {
+    width: min(100%, 26rem, 60vh);
+  }
+
+  .stage {
+    justify-content: center;
+  }
+
+  main {
+    flex: 0 0 auto;
+  }
+
+  .note {
+    flex: 0 0 auto;
+    min-height: min(36rem, 80dvh);
+  }
+
+  .step {
+    padding: 44px 44px 40px;
+  }
+
+  .scene {
+    min-height: 34rem;
+  }
+}
+
+/* Legal pages */
+
+.doc {
+  display: block;
+  padding: clamp(24px, 7vw, 44px);
+}
+
+.doc h1 {
+  margin-bottom: 8px;
+}
+
+.doc h2 {
+  margin: 32px 0 8px;
+  font: 400 1.375rem/1.2 var(--serif);
+}
+
+.doc p,
+.doc li {
+  max-width: 62ch;
+  font-size: 1.0625rem;
+  line-height: 1.65;
+}
+
+.doc ul {
+  margin: 0 0 16px;
+  padding-left: 1.25rem;
+}
+
+.doc li {
+  margin-bottom: 6px;
+}
+
+.doc a {
+  color: var(--night);
+  text-underline-offset: 3px;
+}
+
+.doc .updated {
+  color: var(--muted);
+  font-size: 0.9375rem;
+  margin-bottom: 8px;
+}
+
+.back {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  margin-bottom: 12px;
+  color: var(--night);
+  font-weight: 600;
+  text-underline-offset: 4px;
+}
+
+.stage--doc main {
+  max-width: 44rem;
+}
+
+.stage--doc .top {
+  max-width: 44rem;
+}
